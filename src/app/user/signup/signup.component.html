@@ -1,0 +1,79 @@
+
+<div *ngIf="createdUserId===''; else falsyTemplate">
+<h3>Sign Up Page</h3>
+{{createdUserId}}
+<form [formGroup]="rForm" (ngSubmit)="submit(rForm.value)">
+  <div class="form-container">
+    <div class="row columns">
+      <label>First name* (max length 30):
+        <input type="text" formControlName="fName"/>
+      </label>
+      <div style="color:red;" class="alert" *ngIf="!rForm.controls['fName'].valid && rForm.controls['fName'].touched">
+        Please enter valid value.
+      </div>
+    </div>
+
+    <div class="row columns">
+      <label>Last name* (max length 30):
+        <input type="text" formControlName="lName"/>
+      </label>
+      <div style="color:red;" class="alert" *ngIf="!rForm.controls['lName'].valid && rForm.controls['lName'].touched">
+        Please enter valid value.
+      </div>
+    </div>
+
+    <div class="row columns">
+      <label>Date of birth* (format : yyyy-mm-dd):
+        <input type="text" formControlName="dob"/>
+      </label>
+      <div style="color:red;" class="alert" *ngIf="!rForm.controls['dob'].valid && rForm.controls['dob'].touched">
+        Please enter valid value.
+      </div>
+    </div>
+
+    <div class="row columns">
+      <label>Email*:
+        <input type="text" formControlName="email"/>
+      </label>
+      <div style="color:red;" class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">
+        Please enter valid value.
+      </div>
+    </div>
+
+    <div class="row columns">
+      <label>Address* (max 300 length):
+        <input type="text" formControlName="address"/>
+      </label>
+      <div style="color:red;" class="alert" *ngIf="!rForm.controls['address'].valid && rForm.controls['address'].touched">
+        Please enter valid value.
+      </div>
+    </div>
+
+    <div class="row columns">
+      <label>Password* (password should be at least 3 and max 10 in length):
+        <input type="text" formControlName="password"/>
+      </label>
+      <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
+        Please enter valid value.
+      </div>
+    </div>
+
+    <div class="row columns">
+      <label>Phone*:
+        <input type="text" formControlName="phone"/>
+      </label>
+      <div style="color:red;" class="alert" *ngIf="!rForm.controls['phone'].valid && rForm.controls['phone'].touched">
+        Please enter valid value.
+      </div>
+    </div>
+
+    <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+  </div>
+
+</form>
+</div>
+
+  <ng-template #falsyTemplate>
+    Congratulation !!! You have been registered.
+  </ng-template>
+

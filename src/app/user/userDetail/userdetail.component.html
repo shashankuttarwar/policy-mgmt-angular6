@@ -1,0 +1,73 @@
+
+<div *ngIf="subscribedPolicyData.admin===true">
+  <table>
+    <tr>
+      <td>Welcome</td><td>{{subscribedPolicyData.fName}} &nbsp; {{subscribedPolicyData.lName}}</td>
+    </tr>
+  </table>
+
+  <table >
+    <tr >
+      <th *ngFor="let col of availablePolicyColumns">
+        {{col}}
+      </th>
+    <th>Action</th>
+    </tr>
+        <tr *ngFor="let char of availablePolicyData;let i = index;" >
+          <td [hidden]="!char.edit===true" style="text-align:center;">{{i+1}}</td>
+          <td [hidden]="!char.edit===true" style="text-align:center;"><input type="text" [(ngModel)]="char.name" /></td>
+          <td [hidden]="!char.edit===true" style="text-align:center;"><input type="text"  [(ngModel)]="char.number" /></td>
+          <td [hidden]="!char.edit===true" (click)="savePolicy(char)" style="text-align:center;">Save</td>
+
+
+            <td [hidden]="char.edit===true" style="text-align:center;">{{i+1}}</td>
+            <td [hidden]="char.edit===true" style="text-align:center;">{{char.name}}</td>
+            <td [hidden]="char.edit===true" style="text-align:center;">{{char.number}}</td>
+            <td [hidden]="char.edit===true" style="text-align:center;" (click)="makeEditable(char)">Edit</td>
+        </tr>
+  </table>
+</div>
+
+
+<div *ngIf="subscribedPolicyData.admin===false">
+<table>
+  <tr>
+    <td>Welcome</td><td>{{subscribedPolicyData.fName}} &nbsp; {{subscribedPolicyData.lName}}</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th  *ngFor="let col of availablePolicyColumns">
+      {{col}}
+    </th>
+  </tr>
+  <tr *ngFor="let char of availablePolicyData;let i = index;">
+    <td style="text-align:center;">{{i+1}}</td>
+    <td style="text-align:center;">{{char.name}}</td>
+    <td style="text-align:center;">{{char.number}}</td>
+  </tr>
+</table>
+
+<table style="border:1px">
+  <tr>
+    <td>{{subscribedPolicyData.fName}} &nbsp; {{subscribedPolicyData.lName}}</td><td>Policy details</td>
+  </tr>
+</table>
+
+<table style="border:1px">
+  <tr>
+    <th *ngFor="let col of subscribedPolicyColumns">
+      {{col}}
+    </th>
+  </tr>
+  <tr *ngFor="let char of subscribedPolicyData.polocies;let i = index;">
+    <td style="text-align:center;">{{i+1}}</td>
+    <td style="text-align:center;">{{char.number}}</td>
+    <td style="text-align:center;">{{char.name}}</td>
+    <td style="text-align:center;">{{char.amount}}</td>
+    <td style="text-align:center;">{{char.endDate}}</td>
+    <td style="text-align:center;">{{char.valid}}</td>
+  </tr>
+</table>
+</div>

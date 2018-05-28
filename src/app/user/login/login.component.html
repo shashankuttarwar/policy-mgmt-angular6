@@ -1,0 +1,23 @@
+<h4>Login Page</h4>
+
+<div>
+  <form>
+    <div class="form-container">
+      <div class="row columns">
+        <input type="text" placeholder="Enter user id" id="userId" [(ngModel)] = "userId" name="userId" #usrid1="ngModel"/>
+        <div [hidden]="usrid1.valid || usrid1.pristine">Please enter valid user id.</div>
+      </div>
+
+      <div class="row columns">
+        <input type="password" placeholder="Enter password" id="password" [(ngModel)] = "password" name="password" #pwd1="ngModel"/>
+        <div [hidden]="pwd1.valid || pwd1.pristine">Please enter valid password.</div>
+      </div>
+
+      <div class="row columns">
+        <button (click)="login()">Login</button>
+      </div>
+
+    </div>
+  </form>
+
+</div>
